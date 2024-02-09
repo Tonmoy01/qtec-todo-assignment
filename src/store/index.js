@@ -1,7 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { addReducers } from './slice/todoSlice';
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    todo: addReducers,
+  },
 });
 
 export default store;
