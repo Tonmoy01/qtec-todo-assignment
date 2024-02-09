@@ -18,11 +18,17 @@ function Todo() {
         Learn React from Learn with Sumit YouTube Channel
       </div>
 
-      <div className='flex-shrink-0 w-4 h-4 ml-auto bg-green-500 border-2 border-green-500 rounded-full cursor-pointer hover:bg-green-500'></div>
+      {/* <button className='flex-shrink-0 px-2 ml-auto text-[10px] text-white bg-green-500 border-2 border-green-500 rounded-md cursor-pointer hover:bg-green-500'>
+        Low
+      </button>
 
-      <div className='flex-shrink-0 w-4 h-4 ml-auto border-2 border-yellow-500 rounded-full cursor-pointer hover:bg-yellow-500'></div>
+      <button className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md cursor-pointer hover:bg-yellow-500'>
+        Medium
+      </button>
 
-      <div className='flex-shrink-0 w-4 h-4 ml-auto border-2 border-red-500 rounded-full cursor-pointer hover:bg-red-500'></div>
+      <button className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-red-500 bg-red-500 rounded-md cursor-pointer hover:bg-red-500'>
+        High
+      </button> */}
 
       <IoTrashOutline className='flex-shrink-0 w-4 h-4 ml-2 cursor-pointer' />
       <IoCreateOutline className='flex-shrink-0 w-4 h-4 ml-2 cursor-pointer' />
