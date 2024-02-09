@@ -1,8 +1,8 @@
 import React from 'react';
 import {
   IoNewspaperOutline,
-  IoAddCircleOutline,
   IoCheckmarkDone,
+  IoPaperPlaneOutline,
 } from 'react-icons/io5';
 
 function Header() {
@@ -21,13 +21,16 @@ function Header() {
           type='submit'
           className='bg-no-repeat bg-contain appearance-none'
         >
-          <IoAddCircleOutline className='w-8 h-8' />
+          <IoPaperPlaneOutline className='w-8 h-8' />
         </button>
       </form>
 
-      <div className='flex gap-4 mt-4'>
+      <div className='flex justify-between gap-4 mt-4'>
         <h3 className='text-lg font-normal'>Select Priority</h3>
-        <select className='px-2 text-white rounded-md outline-none bg-slate-500'>
+        <select
+          required
+          className='px-5 bg-blue-100 rounded-md outline-none text-dark'
+        >
           <option value=''>Low</option>
           <option value=''>Medium</option>
           <option value=''>High</option>
