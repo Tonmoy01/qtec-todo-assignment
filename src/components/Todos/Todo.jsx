@@ -1,24 +1,31 @@
 import React, { useState } from 'react';
-import { IoTrashOutline, IoCreateOutline } from 'react-icons/io5';
+import {
+  IoTrashOutline,
+  IoCreateOutline,
+  IoSaveOutline,
+} from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import todoSlice from '../../store/slice/todoSlice';
 
 function Todo({ item }) {
   const dispatch = useDispatch();
-  const { id, title, isSelected } = item;
+  const { id, title, isSelected, isComplete } = item;
 
   const [isEdit, setIsEdit] = useState(false);
   const [updatedValue, setUpdatedValue] = useState(title);
+  const [isChecked, setIsChecked] = useState(isComplete);
+
+  console.log(item);
 
   const deleteHandler = (id) => {
-    dispatch(todoSlice.delete(id)); // Change here
+    dispatch(todoSlice.delete(id));
   };
 
   const editHandler = () => {
     setIsEdit(!isEdit);
   };
 
-  const updatedValueHandler = (e) => {
+  const updateTitleHandler = (e) => {
     e.preventDefault();
     if (isEdit) {
       dispatch(todoSlice.edit({ id, updatedData: { title: updatedValue } }));
@@ -27,20 +34,46 @@ function Todo({ item }) {
     setIsEdit(false);
   };
 
+  const updatedStatusHandler = (id) => {
+    dispatch(todoSlice.edit({ id, updatedData: { isComplete: !isComplete } }));
+  };
+
   return (
     <div className='flex items-center justify-between p-2 space-x-4 border-b hover:bg-gray-100 hover:transition-all border-gray-400/20 last:border-0'>
-      <div className='flex gap-4'>
-        <input type='checkbox' className='w-4 h-4' />
+      <div className='flex items-center gap-4'>
+        <input
+          type='checkbox'
+          checked={isChecked}
+          onChange={() => {
+            setIsChecked(!isChecked);
+            updatedStatusHandler(id);
+          }}
+          className='w-4 h-4'
+        />
         {isEdit ? (
-          <form onSubmit={updatedValueHandler}>
+          <form
+            onSubmit={updateTitleHandler}
+            className='flex items-center gap-2'
+          >
             <input
               type='text'
               value={updatedValue}
               onChange={(e) => setUpdatedValue(e.target.value)}
+              className='p-1 py-1 bg-blue-100 rounded-lg outline-none'
+            />
+            <IoSaveOutline
+              className='w-5 h-5 cursor-pointer'
+              onClick={updateTitleHandler}
             />
           </form>
         ) : (
-          <div className='flex-1 select-none'>{title}</div>
+          <div
+            className={`flex-1 select-none text-lg ${
+              isChecked ? 'line-through opacity-20' : null
+            }`}
+          >
+            {title}
+          </div>
         )}
 
         {isSelected === 'low' ? (

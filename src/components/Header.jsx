@@ -14,10 +14,15 @@ function Header() {
   const [title, setTitle] = useState('');
   const [isSelected, setIsSelected] = useState('low');
 
+  const data = { id: uuidv4(), title, isSelected, isComplete: false };
+
   const submitHandler = (e) => {
     e.preventDefault();
 
-    dispatch(todoSlice.add({ id: uuidv4(), title, isSelected }));
+    dispatch(todoSlice.add(data));
+
+    setTitle('');
+    setIsSelected('low');
   };
 
   return (
