@@ -8,9 +8,7 @@ const todoSlice = createSlice({
       state.push(payload);
     },
     delete: (state, { payload }) => {
-      return state.filter((item) => {
-        item.id !== payload.id;
-      });
+      return state.filter((item) => item.id !== payload);
     },
     edit: (state, { payload }) => {
       const index = state.findIndex((item) => item.id === payload.id);

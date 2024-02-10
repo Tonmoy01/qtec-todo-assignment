@@ -11,7 +11,7 @@ function Todo({ item }) {
   const [updatedValue, setUpdatedValue] = useState(title);
 
   const deleteHandler = (id) => {
-    dispatch(todoSlice.delete(id));
+    dispatch(todoSlice.delete(id)); // Change here
   };
 
   const editHandler = () => {
