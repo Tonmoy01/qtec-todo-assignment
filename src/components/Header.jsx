@@ -61,19 +61,13 @@ function Header() {
         </select>
       </div>
 
-      <ul className='flex justify-between my-4 text-xs text-gray-500'>
-        <li className='flex space-x-1 cursor-pointer'>
-          <button className='flex px-4 py-2 text-sm text-white rounded-md bg-cyan-400'>
-            <IoCheckmarkDone className='w-4 h-4' />
-            <span>Complete All Tasks</span>
-          </button>
-        </li>
-        <li className='cursor-pointer'>
-          <button className='px-4 py-2 text-sm text-white rounded-md bg-cyan-400'>
-            Clear completed
-          </button>
-        </li>
-      </ul>
+      <button
+        className='flex px-4 py-2 mt-5 text-sm text-white rounded-md bg-cyan-400'
+        onClick={() => dispatch(todoSlice.completeAll())}
+      >
+        <IoCheckmarkDone className='w-4 h-4' />
+        <span>Complete All Tasks</span>
+      </button>
     </div>
   );
 }

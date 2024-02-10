@@ -16,6 +16,9 @@ const todoSlice = createSlice({
         state[index] = { ...state[index], ...payload.updatedData };
       }
     },
+    completeAll: (state) => {
+      return state?.map((item) => ({ ...item, isComplete: true }));
+    },
   },
 });
 

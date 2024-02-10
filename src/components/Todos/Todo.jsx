@@ -13,9 +13,6 @@ function Todo({ item }) {
 
   const [isEdit, setIsEdit] = useState(false);
   const [updatedValue, setUpdatedValue] = useState(title);
-  const [isChecked, setIsChecked] = useState(isComplete);
-
-  console.log(item);
 
   const deleteHandler = (id) => {
     dispatch(todoSlice.delete(id));
@@ -38,14 +35,15 @@ function Todo({ item }) {
     dispatch(todoSlice.edit({ id, updatedData: { isComplete: !isComplete } }));
   };
 
+  console.log(isComplete);
+
   return (
     <div className='flex items-center justify-between p-2 space-x-4 border-b hover:bg-gray-100 hover:transition-all border-gray-400/20 last:border-0'>
       <div className='flex items-center gap-4'>
         <input
           type='checkbox'
-          checked={isChecked}
+          checked={isComplete}
           onChange={() => {
-            setIsChecked(!isChecked);
             updatedStatusHandler(id);
           }}
           className='w-4 h-4'
@@ -69,7 +67,7 @@ function Todo({ item }) {
         ) : (
           <div
             className={`flex-1 select-none text-lg ${
-              isChecked ? 'line-through opacity-20' : null
+              isComplete ? 'line-through opacity-20' : null
             }`}
           >
             {title}

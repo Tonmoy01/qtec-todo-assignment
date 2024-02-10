@@ -6,16 +6,21 @@ import { setStatus } from '../store/slice/statusSlice';
 function Footer() {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.status);
+  const items = useSelector((state) => state.todo);
+
+  const leftTasks = items?.filter((item) => !item.isComplete);
+
+  const amount = leftTasks.length;
 
   return (
     <div className='flex justify-between mt-4 text-xs text-gray-500'>
-      <p>2 tasks left</p>
+      <p>
+        {amount} {amount === 1 || amount === 0 ? 'task' : 'tasks'} left
+      </p>
       <div className='flex gap-2'>
         <ul className='flex items-center space-x-1 text-xs'>
           <li
-            className={`font-bold cursor-pointer ${
-              status === '' && 'text-blue-500'
-            }`}
+            className={`cursor-pointer ${status === '' && 'font-bold'}`}
             onClick={() => {
               dispatch(setStatus('')), dispatch(setPriority(''));
             }}
@@ -24,14 +29,14 @@ function Footer() {
           </li>
           <li>|</li>
           <li
-            className={`cursor-pointer ${status === false && 'text-blue-500'}`}
+            className={`cursor-pointer ${status === false && 'font-bold'}`}
             onClick={() => dispatch(setStatus(false))}
           >
             Incomplete
           </li>
           <li>|</li>
           <li
-            className={`cursor-pointer ${status === true && 'text-blue-500'}`}
+            className={`cursor-pointer ${status === true && 'font-bold'}`}
             onClick={() => dispatch(setStatus(true))}
           >
             Complete

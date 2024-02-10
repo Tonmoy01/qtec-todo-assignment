@@ -19,9 +19,9 @@ function TodoList() {
 
   return (
     <div className='mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto'>
-      {filteredStatusTodo?.map((item) => (
-        <Todo key={item.id} item={item} />
-      ))}
+      {filteredStatusTodo.length === 0
+        ? 'You have nothings to do!'
+        : filteredStatusTodo?.map((item) => <Todo key={item.id} item={item} />)}
     </div>
   );
 }
