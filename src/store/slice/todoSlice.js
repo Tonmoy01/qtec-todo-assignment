@@ -13,9 +13,10 @@ const todoSlice = createSlice({
       });
     },
     edit: (state, { payload }) => {
-      return state.filter((item) => {
-        item.id === payload.id;
-      });
+      const index = state.findIndex((item) => item.id === payload.id);
+      if (index !== -1) {
+        state[index] = { ...state[index], ...payload.updatedData };
+      }
     },
   },
 });
