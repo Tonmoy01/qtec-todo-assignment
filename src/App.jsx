@@ -8,7 +8,7 @@ function App() {
     <div className='grid h-screen px-6 font-sans bg-blue-100 place-items-center'>
       <Navbar />
 
-      <div className='w-full max-w-3xl p-6 bg-white rounded-lg shadow-lg'>
+      <div className='w-full p-6 bg-white rounded-lg shadow-lg md:max-w-3xl'>
         <Header />
 
         <hr className='mt-4' />

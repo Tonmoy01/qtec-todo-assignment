@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch } from 'react-redux';
 import {
@@ -28,20 +28,23 @@ function Header() {
   return (
     <div>
       <h1 className='mb-3 text-lg font-medium'>Task Title</h1>
-      <form className='flex items-center px-4 py-4 bg-gray-100 rounded-md'>
+      <form
+        className='flex items-center px-4 py-4 bg-gray-100 rounded-md'
+        onSubmit={submitHandler}
+      >
         <IoNewspaperOutline className='w-6 h-6' />
         <input
           type='text'
           placeholder='Type your todo'
           className='w-full px-4 py-1 text-lg text-gray-500 bg-gray-100 border-none outline-none'
           value={title}
+          required
           onChange={(e) => setTitle(e.target.value)}
         />
 
         <button
           type='submit'
           className='bg-no-repeat bg-contain appearance-none'
-          onClick={submitHandler}
         >
           <IoPaperPlaneOutline className='w-8 h-8' />
         </button>

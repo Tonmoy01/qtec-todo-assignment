@@ -13,11 +13,11 @@ function Footer() {
   const amount = leftTasks.length;
 
   return (
-    <div className='flex justify-between mt-4 text-xs text-gray-500'>
+    <div className='flex flex-col justify-between mt-4 text-xs text-gray-500 md:flex-row'>
       <p>
         {amount} {amount === 1 || amount === 0 ? 'task' : 'tasks'} left
       </p>
-      <div className='flex gap-2'>
+      <div className='flex flex-col gap-2 md:flex-row'>
         <ul className='flex items-center space-x-1 text-xs'>
           <li
             className={`cursor-pointer ${status === '' && 'font-bold'}`}
@@ -44,26 +44,28 @@ function Footer() {
           <li></li>
           <li></li>
         </ul>
-        <button
-          className='flex-shrink-0 px-2 ml-auto text-[10px] text-white bg-green-500 border-2 border-green-500 rounded-md cursor-pointer hover:bg-green-500'
-          onClick={() => dispatch(setPriority('low'))}
-        >
-          Low
-        </button>
+        <div className='flex gap-4'>
+          <button
+            className='flex-shrink-0 px-2 w-max md:ml-auto text-[10px] text-white bg-green-500 border-2 border-green-500 rounded-md cursor-pointer hover:bg-green-500'
+            onClick={() => dispatch(setPriority('low'))}
+          >
+            Low
+          </button>
 
-        <button
-          className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md cursor-pointer hover:bg-yellow-500'
-          onClick={() => dispatch(setPriority('medium'))}
-        >
-          Medium
-        </button>
+          <button
+            className='flex-shrink-0 px-2 w-max md:ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md cursor-pointer hover:bg-yellow-500'
+            onClick={() => dispatch(setPriority('medium'))}
+          >
+            Medium
+          </button>
 
-        <button
-          className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-red-500 bg-red-500 rounded-md cursor-pointer hover:bg-red-500'
-          onClick={() => dispatch(setPriority('high'))}
-        >
-          High
-        </button>
+          <button
+            className='flex-shrink-0 px-2 w-max md:ml-auto text-[10px] text-white border-red-500 bg-red-500 rounded-md cursor-pointer hover:bg-red-500'
+            onClick={() => dispatch(setPriority('high'))}
+          >
+            High
+          </button>
+        </div>
       </div>
     </div>
   );
