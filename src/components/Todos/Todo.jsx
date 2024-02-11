@@ -19,7 +19,11 @@ function Todo({ item }) {
   };
 
   const editHandler = () => {
-    setIsEdit(!isEdit);
+    if (isComplete) {
+      setIsEdit(false);
+    } else {
+      setIsEdit(!isEdit);
+    }
   };
 
   const updateTitleHandler = (e) => {
@@ -59,10 +63,9 @@ function Todo({ item }) {
               onChange={(e) => setUpdatedValue(e.target.value)}
               className='p-1 py-1 bg-blue-100 rounded-lg outline-none'
             />
-            <IoSaveOutline
-              className='w-5 h-5 cursor-pointer'
-              onClick={updateTitleHandler}
-            />
+            <button>
+              <IoSaveOutline className='w-5 h-5' />
+            </button>
           </form>
         ) : (
           <div
@@ -75,27 +78,33 @@ function Todo({ item }) {
         )}
 
         {isSelected === 'low' ? (
-          <button className='flex-shrink-0 px-2 ml-auto text-[10px] text-white bg-green-500 border-2 border-green-500 rounded-md cursor-pointer hover:bg-green-500'>
+          <div className='flex-shrink-0 px-2 ml-auto text-[10px] text-white bg-green-500 border-2 border-green-500 rounded-md hover:bg-green-500'>
             Low
-          </button>
+          </div>
         ) : isSelected === 'medium' ? (
-          <button className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md cursor-pointer hover:bg-yellow-500'>
+          <div className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md hover:bg-yellow-500'>
             Medium
-          </button>
+          </div>
         ) : isSelected === 'high' ? (
-          <button className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-red-500 bg-red-500 rounded-md cursor-pointer hover:bg-red-500'>
+          <div className='flex-shrink-0 px-2 ml-auto text-[10px] text-white border-red-500 bg-red-500 rounded-md hover:bg-red-500'>
             High
-          </button>
+          </div>
         ) : null}
       </div>
 
       <div className='flex gap-2'>
         <button
-          className='flex items-center gap-1 px-2 ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md cursor-pointer hover:bg-yellow-500'
+          className={`flex items-center gap-1 px-2 ml-auto text-[10px] text-white border-yellow-500 bg-yellow-500 rounded-md cursor-pointer hover:bg-yellow-500 ${
+            isComplete ? 'opacity-15' : null
+          }`}
           onClick={() => editHandler(id)}
+          disabled={isComplete ? true : false}
         >
-          <IoCreateOutline className='flex-shrink-0 w-4 h-4 cursor-pointer' />{' '}
-          <span>Edit</span>
+          {!isEdit ? (
+            <IoCreateOutline className='flex-shrink-0 w-4 h-4 cursor-pointer' />
+          ) : (
+            'Cancel'
+          )}
         </button>
 
         <button

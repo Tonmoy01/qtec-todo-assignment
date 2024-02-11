@@ -30,6 +30,14 @@ const todoSlice = createSlice({
 
       setTodo(state);
     },
+    completeAll: (state) => {
+      const newState = state.map((item) => ({
+        ...item,
+        isComplete: true,
+      }));
+      setTodo(newState);
+      return newState;
+    },
   },
 });
 
