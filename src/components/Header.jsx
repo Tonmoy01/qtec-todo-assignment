@@ -7,6 +7,7 @@ import {
   IoPaperPlaneOutline,
 } from 'react-icons/io5';
 import todoSlice from '../store/slice/todoSlice';
+import Search from './Search';
 
 function Header() {
   const dispatch = useDispatch();
@@ -71,6 +72,8 @@ function Header() {
         <IoCheckmarkDone className='w-4 h-4' />
         <span>Complete All Tasks</span>
       </button>
+
+      <Search />
     </div>
   );
 }

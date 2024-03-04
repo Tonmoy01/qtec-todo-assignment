@@ -23,7 +23,8 @@ Features:
 3. Task Complete and Incomplete using Checkbox
 4. Added Complete All Tasks Button, when Click this Button All Tasks are Checked
 5. Task Filtering with Priority(Low, Medium, High) and Status (All, Complete, Incomplete)
-6. How Many Tasks are Incomplete make this counting section in footer.
-7. All Tasks are saved to local storage with CRUD Operation
-8. Redux Toolkit Use for State Management
-9. Mobile Responsive Design
+6. Search todo
+7. How Many Tasks are Incomplete make this counting section in footer.
+8. All Tasks are saved to local storage with CRUD Operation
+9. Redux Toolkit Use for State Management
+10. Mobile Responsive Design

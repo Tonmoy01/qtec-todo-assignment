@@ -6,6 +6,7 @@ function TodoList() {
   const todosItem = useSelector((state) => state.todo);
   const priority = useSelector((state) => state.priority);
   const status = useSelector((state) => state.status);
+  const searchTerm = useSelector((state) => state.search);
 
   const filteredTodo =
     priority === ''
@@ -17,11 +18,17 @@ function TodoList() {
       ? filteredTodo
       : filteredTodo.filter((item) => item.isComplete === status);
 
+  const filteredSearchTodo = searchTerm
+    ? filteredStatusTodo.filter((item) =>
+        item.title.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : filteredStatusTodo;
+
   return (
     <div className='mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto'>
-      {filteredStatusTodo?.length === 0
-        ? 'You have nothings to do!'
-        : filteredStatusTodo?.map((item) => <Todo key={item.id} item={item} />)}
+      {filteredSearchTodo?.length === 0
+        ? 'No matching todos found!'
+        : filteredSearchTodo?.map((item) => <Todo key={item.id} item={item} />)}
     </div>
   );
 }
